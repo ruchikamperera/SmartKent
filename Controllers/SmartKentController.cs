@@ -29,9 +29,12 @@ namespace SmartKent.Controllers
 
 
         [HttpGet]
-        [Route("SmartKent/PickAndDrop/{fromFloor},{toFloor}")]
-        public string PickAndDrop(int fromFloor, int toFloor)
+        [Route("SmartKent/liftsimulation")]
+        public string PickAndDrop( )
         {
+             int fromFloor = Convert.ToInt32(  HttpContext.Request.Query["fromFloor"]);
+             int toFloor = Convert.ToInt32(HttpContext.Request.Query["toFloor"]);
+
             // return value
             string result = String.Empty;
             int totalTimeDurationToPickUp = 0;  // total time that takes to reach the floor
@@ -214,7 +217,7 @@ namespace SmartKent.Controllers
 
             } else
             {
-                result = "Both lifts are busy";
+              return  result = "Both lifts are busy";
             }
 
             result = "ETA - " + totalTimeDurationToPickUp.ToString();
